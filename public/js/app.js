@@ -684,29 +684,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "navbar-start" }, [
-      _c(
-        "a",
-        { staticClass: "navbar-item", attrs: { href: "medicaments.html" } },
-        [_vm._v("Medicaments")]
-      ),
+      _c("a", { staticClass: "navbar-item", attrs: { href: "/medicaments" } }, [
+        _vm._v("Medicaments")
+      ]),
       _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "navbar-item", attrs: { href: "pharmacies.html" } },
-        [_vm._v("Pharmacies")]
-      ),
+      _c("a", { staticClass: "navbar-item", attrs: { href: "/pharmacies" } }, [
+        _vm._v("Pharmacies")
+      ]),
       _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "navbar-item", attrs: { href: "employees.html" } },
-        [_vm._v("Employees")]
-      ),
+      _c("a", { staticClass: "navbar-item", attrs: { href: "/employees" } }, [
+        _vm._v("Employees")
+      ]),
       _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "navbar-item", attrs: { href: "positions.html" } },
-        [_vm._v("Positions")]
-      )
+      _c("a", { staticClass: "navbar-item", attrs: { href: "/positions" } }, [
+        _vm._v("Positions")
+      ])
     ])
   }
 ]

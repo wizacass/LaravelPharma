@@ -18,24 +18,24 @@
         <div class="tile is-vertical is-parent">
             <div class="tile is-child">
                 <article class="tile is-child notification is-info">
-                    <a class="title" href="pharmacies.html">Pharmacies</a>
+                    <a class="title" href="/pharmacies">Pharmacies</a>
                 </article>
             </div>
             <div class="tile is-child">
                 <article class="tile is-child notification is-info">
-                    <a class="title" href="medicaments.html">Medicaments</a>
+                    <a class="title" href="/medicaments">Medicaments</a>
                 </article>
             </div>
         </div>
         <div class="tile is-vertical is-parent">
             <div class="tile is-child">
                 <article class="tile is-child notification is-info">
-                    <a class="title" href="employees.html">Employees</a>
+                    <a class="title" href="/employees">Employees</a>
                 </article>
             </div>
             <div class="tile is-child">
                 <article class="tile is-child notification is-info">
-                    <a class="title" href="positions.html">Positions</a>
+                    <a class="title" href="/positions">Positions</a>
                 </article>
             </div>
         </div>
