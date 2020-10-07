@@ -14,9 +14,6 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        $employees = Employee::factory()->count(10)->make();
-        foreach ($employees as $employee) {
-            $employee->save();
-        }
+        $employees = Employee::factory()->count(10)->create();
     }
 }
