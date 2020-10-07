@@ -16,7 +16,7 @@ class CreateRegistersTable extends Migration
         Schema::create('registers', function (Blueprint $table) {
             $table->id();
             $table->string('model');
-            $table->decimal('cash');
+            $table->decimal('cash')->default(0);
             $table->unsignedBigInteger('pharmacy_id');
             $table->timestamps();
 

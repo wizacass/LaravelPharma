@@ -16,8 +16,8 @@ class CreatePharmaciesTable extends Migration
         Schema::create('pharmacies', function (Blueprint $table) {
             $table->id();
             $table->string('address');
-            $table->decimal('revenue');
-            $table->string('phone_number');
+            $table->decimal('revenue')->default(0);
+            $table->string('phone_number')->nullable();
             $table->boolean('is_manufacturing');
             $table->unsignedInteger('max_employees');
             $table->timestamps();

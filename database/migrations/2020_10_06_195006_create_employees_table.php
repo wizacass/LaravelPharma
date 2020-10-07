@@ -18,7 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->unsignedBigInteger('position_id');
-            $table->unsignedBigInteger('pharmacy_id');
+            $table->unsignedBigInteger('pharmacy_id')->nullable();
             $table->timestamps();
 
             $table->foreign('position_id')

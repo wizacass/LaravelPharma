@@ -17,9 +17,9 @@ class CreateMedicamentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('active_substance');
-            $table->string('bar_code');
+            $table->string('bar_code')->unique();
             $table->decimal('price');
-            $table->boolean('recipe_required');
+            $table->boolean('recipe_required')->default(false);
             $table->timestamps();
         });
     }
