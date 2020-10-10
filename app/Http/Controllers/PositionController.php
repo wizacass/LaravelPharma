@@ -32,48 +32,29 @@ class PositionController extends Controller
         return redirect(route('positions.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function show($id) 
+    { 
+        return redirect(route('positions.index')); 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Position $position)
     {
-        dd("I edit a position with id: $id");
+        return view('positions.edit', compact('position'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Position $position)
     {
-        //
+        $attributes = request()->validate([
+            'title' => $this->_validators,
+        ]);
+        $position->update($attributes);
+
+        return redirect(route('positions.index')); 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        dd('I delete a position!');
+        Position::destroy($id);
+        return redirect(route('positions.index'));
     }
 }
