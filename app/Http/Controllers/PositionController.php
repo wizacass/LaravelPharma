@@ -7,36 +7,29 @@ use App\Models\Position;
 
 class PositionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $_validators = ['required', 'min:3', 'max:255'];
+
     public function index()
     {
         $positions = Position::all();
         return view('positions.index', compact('positions'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        dd('I create new position!');
+        return view('positions.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $attributes = request()->validate([
+            'title' => $this->_validators,
+        ]);
+
+        $position = new Position($attributes);
+        $position->save();
+
+        return redirect(route('positions.index'));
     }
 
     /**

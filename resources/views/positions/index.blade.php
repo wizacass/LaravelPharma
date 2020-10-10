@@ -44,10 +44,8 @@
             </tbody>
         </table>
 
-        <br />
-        <div class="field has-text-centered">
+        <div class="field has-text-centered" style="padding-top: 1em">
             <a href="/positions/create" class="button is-warning is-large">Register a new Position</a>
         </div>
-        <br />
     </div>
 @endsection
