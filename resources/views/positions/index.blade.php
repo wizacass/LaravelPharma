@@ -26,15 +26,16 @@
                     <tr>
                         <td>{{ $position->title }}</td>
                         <td>
-                            <div class="level">
-                                <div class="level-item">
+                            <div class="field is-grouped">
+                                <div class="control">
                                     <a class="button is-warning is-small" href="/positions/{{ $position->id }}/edit">Edit</a>
                                 </div>
-                                <div class="level-item">
-                                    <p>&nbsp;&nbsp;</p>
-                                </div>
-                                <div class="level-item">
-                                    <a class="button is-dark is-small is-outlined" href="">Delete</a>
+                                <div class="control">
+                                    <form method="POST" action="/positions/{{ $position->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="button is-dark is-small is-outlined" type="submit">Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </td>
