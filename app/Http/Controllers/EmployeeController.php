@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Position;
 
 class EmployeeController extends Controller
 {
@@ -15,18 +16,22 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        dd('I register a new employee!');
+        $positions = Position::all();
+        return view('employees.create', compact('positions'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $attributes = request()->validate([
+            'name' => ['required', 'max:255'],
+            'surname' => ['required', 'max:255'],
+            'position' => ['required', 'exists:positions,id'],
+        ]);
+
+        $employee = new Employee($attributes);
+        $employee->save();
+
+        return redirect(route('employees.index')); 
     }
 
     public function show($id)
