@@ -39,21 +39,22 @@ class EmployeeController extends Controller
         return redirect(route('employees.index')); 
     }
 
-    public function edit($id)
+    public function edit(Employee $employee)
     {
-        dd('I edit employee!');
+        $positions = Position::all();
+        return view('employees.edit', compact('employee', 'positions'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Employee $employee)
     {
-        //
+        $attributes = request()->validate([
+            'name' => ['required', 'max:255'],
+            'surname' => ['required', 'max:255'],
+            'position_id' => ['required', 'exists:positions,id'],
+        ]);
+        $employee->update($attributes);
+
+        return redirect(route('employees.index')); 
     }
 
     public function destroy($id)

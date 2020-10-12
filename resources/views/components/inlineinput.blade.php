@@ -6,7 +6,7 @@
         <div class="field">
             <p class="control">
                 <input class="input" class="input {{ $errors->has($for) ? 'is-danger' : '' }}" name={{ $for }}
-                value="{{ old($for) }}" type="text" required>
+                value="{{ $value ?? old($for) }}" type="text" required>
             </p>
         </div>
     </div>
