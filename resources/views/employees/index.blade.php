@@ -9,7 +9,7 @@
 
         <table class="table is-striped" style="margin: auto">
             <caption>
-                <p class="subtitle">All employees</p>
+                <p class="subtitle">{{ $label }}</p>
             </caption>
             <thead>
                 <th>ID</th>
