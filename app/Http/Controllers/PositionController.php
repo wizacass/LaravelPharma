@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Employee;
 use App\Models\Position;
+use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
@@ -32,9 +33,11 @@ class PositionController extends Controller
         return redirect(route('positions.index'));
     }
 
-    public function show($id) 
+    public function show(Position $position) 
     { 
-        return redirect(route('positions.index')); 
+        $employees = Employee::where('position_id', $position->id)->get();
+        $label = "All {$position->title}s";
+        return view('employees.index', compact('employees', 'label'));
     }
 
     public function edit(Position $position)

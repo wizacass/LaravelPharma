@@ -24,7 +24,11 @@
             <tbody>
                 @foreach ($positions as $position)
                     <tr>
-                        <td>{{ $position->title }}</td>
+                        <td>
+                            <a href="/positions/{{ $position->id }}">
+                                {{ $position->title }}
+                            </a>
+                        </td>
                         <td>
                             <div class="field is-grouped">
                                 <div class="control">
