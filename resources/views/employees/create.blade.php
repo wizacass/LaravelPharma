@@ -16,12 +16,12 @@
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label" for="position">Position</label>
+                    <label class="label" for="position_id">Position</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <div class="select is-fullwidth">
-                            <select name="position">
+                        <div class="select is-fullwidth {{ $errors->has('position_id') ? 'is-danger' : '' }}">
+                            <select name="position_id">
                                 <option>Select a position</option>
                                 @foreach ($positions as $position)
                                     <option value="{{ $position->id }}">{{ $position->title }}</option>

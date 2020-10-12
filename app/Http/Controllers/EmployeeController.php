@@ -25,7 +25,7 @@ class EmployeeController extends Controller
         $attributes = request()->validate([
             'name' => ['required', 'max:255'],
             'surname' => ['required', 'max:255'],
-            'position' => ['required', 'exists:positions,id'],
+            'position_id' => ['required', 'exists:positions,id'],
         ]);
 
         $employee = new Employee($attributes);
