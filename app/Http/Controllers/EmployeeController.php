@@ -58,6 +58,7 @@ class EmployeeController extends Controller
 
     public function destroy($id)
     {
-        dd('I delete the employee!');
+        Employee::destroy($id);
+        return redirect(route('employees.index'));
     }
 }
