@@ -10,4 +10,9 @@ class Employee extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'surname', 'position_id', 'pharmacy_id'];
+
+    function position() 
+    {
+        return $this->belongsTo('App\Models\Position');
+    }
 }
