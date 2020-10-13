@@ -14,25 +14,18 @@ class MedicamentController extends Controller
         return view('medicaments.index', compact('medicaments', 'label'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        dd('I create a new medicamnet!');
+        return view('medicaments.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $attributes = $this->validateMedicament();
+        $medicament = new Medicament($attributes);
+        $medicament->save();
+
+        return redirect(route('medicaments.index'));
     }
 
     /**
@@ -69,14 +62,21 @@ class MedicamentController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        dd('I delete a medicamnet!');
+        Medicament::destroy($id);
+        return redirect(route('medicaments.index'));
+    }
+
+    private function validateMedicament()
+    {
+        $stringValidators = ['required', 'min:3', 'max:255'];
+        return request()->validate([
+            'name' => $stringValidators,
+            'active_substance' => $stringValidators,
+            'bar_code' => ['required', 'unique:medicaments,bar_code', 'min:8', 'max:14', 'regex:/^[0-9]*$/'],
+            'price' => ['required', 'numeric', 'min:0.01'],
+            'recipe_required' => ['required', 'Boolean'],
+        ]);
     }
 }
