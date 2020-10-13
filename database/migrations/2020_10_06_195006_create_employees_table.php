@@ -17,17 +17,19 @@ class CreateEmployeesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->unsignedBigInteger('position_id');
+            $table->unsignedBigInteger('position_id')->nullable();
             $table->unsignedBigInteger('pharmacy_id')->nullable();
             $table->timestamps();
 
             $table->foreign('position_id')
                 ->references('id')
-                ->on('positions');
+                ->on('positions')
+                ->onDelete('set null');
 
             $table->foreign('pharmacy_id')
                 ->references('id')
-                ->on('pharmacies');
+                ->on('pharmacies')
+                ->onDelete('set null');
         });
     }
 
