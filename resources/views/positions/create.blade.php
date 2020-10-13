@@ -10,15 +10,11 @@
             @csrf
 
             <x-formerror />
-            <div class="field">
-                <label class="label" for="title">Title</label>
-                <div class="control">
-                    <input type="text" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" name="title"
-                        value="{{ old('title') }}" placeholder="Position title" required>
-                </div>
-            </div>
+            
+            <x-inlineinput label="Title" for="title" />
+            
             <div class="field has-text-centered">
-                <button class="button is-warning is-large" type="submit">Create</button>
+                <button class="button is-success is-large" type="submit">Create</button>
             </div>
         </form>
     </div>

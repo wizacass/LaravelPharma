@@ -1,7 +1,7 @@
 @extends('layouts/main')
 
 @section('content')
-    <x-hero color="is-success">
+    <x-hero>
         Register a new Employee
     </x-hero>
 

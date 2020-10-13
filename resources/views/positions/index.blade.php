@@ -1,15 +1,9 @@
 @extends('layouts/main')
 
 @section('content')
-    <section class="hero is-warning is-bold">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">
-                    Positions
-                </h1>
-            </div>
-        </div>
-    </section>
+    <x-hero>
+        Positions
+    </x-hero>
 
     <div class="container" style="margin-top: 1em">
 
@@ -30,26 +24,13 @@
                             </a>
                         </td>
                         <td>
-                            <div class="field is-grouped">
-                                <div class="control">
-                                    <a class="button is-warning is-small" href="/positions/{{ $position->id }}/edit">Edit</a>
-                                </div>
-                                <div class="control">
-                                    <form method="POST" action="/positions/{{ $position->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="button is-dark is-small is-outlined" type="submit">Delete</button>
-                                    </form>
-                                </div>
-                            </div>
+                            <x-editdelete href="/positions/{{ $position->id }}" />
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <div class="field has-text-centered" style="padding-top: 1em">
-            <a href="/positions/create" class="button is-warning is-large">Register a new Position</a>
-        </div>
+       <x-largebutton href="/positions/create">Add new position</x-largebutton>
     </div>
 @endsection
