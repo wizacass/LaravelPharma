@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{ $employee->id }}</td>
                         <td>{{ $employee->name }} {{ $employee->surname }}</td>
-                        <td>{{ $employee->position->title ?? "Pharmcist" }}</td>
+                        <td>{{ $employee->position->title ?? "Pharmacy worker" }}</td>
                         <td>
                             @if ($employee->pharmacy_id != NULL)
                                 <a href="/pharmacies/{{ $employee->pharmacy_id }}">No. {{ $employee->pharmacy_id }}</a>
