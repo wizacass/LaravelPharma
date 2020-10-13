@@ -1,7 +1,7 @@
 @extends('layouts/main')
 
 @section('content')
-    <x-hero color="is-success">
+    <x-hero>
         Employees
     </x-hero>
 
@@ -32,26 +32,15 @@
                             @endif
                         </td>
                         <td>
-                            <div class="field is-grouped">
-                                <div class="control">
-                                    <a class="button is-success is-small is-outlined" href="/employees/{{ $employee->id }}/edit">Edit</a>
-                                </div>
-                                <div class="control">
-                                    <form method="POST" action="/employees/{{ $employee->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="button is-dark is-small is-outlined" type="submit">Delete</button>
-                                    </form>
-                                </div>
-                            </div>
+                            <x-editdelete href="/employees/{{ $employee->id }}" />
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <div class="field has-text-centered" style="padding: 1em">
-            <a href="/employees/create" class="button is-success is-large">Register a new Employee</a>
-        </div>
+        <x-largebutton href="employees/create">
+            Register a new employee
+        </x-largebutton>
     </div>
 @endsection
