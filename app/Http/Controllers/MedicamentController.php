@@ -75,7 +75,7 @@ class MedicamentController extends Controller
             'name' => $stringValidators,
             'active_substance' => $stringValidators,
             'bar_code' => ['required', 'unique:medicaments,bar_code', 'min:8', 'max:14', 'regex:/^[0-9]*$/'],
-            'price' => ['required', 'numeric', 'min:0.01'],
+            'price' => ['required', 'numeric', 'min:0.01', 'regex:/^\d+\.\d{0,2}$/'],
             'recipe_required' => ['required', 'Boolean'],
         ]);
     }
