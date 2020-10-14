@@ -28,38 +28,22 @@ class MedicamentController extends Controller
         return redirect(route('medicaments.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        return redirect(route('medicaments.index'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Medicament $medicament)
     {
-        dd('I edit a medicamnet!');
+        return view('medicaments.edit', compact('medicament'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Medicament $medicament)
     {
-        //
+        $attributes = $this->validateMedicament($medicament);
+        $medicament->update($attributes);
+
+        return redirect(route('medicaments.index')); 
     }
 
     public function destroy($id)
@@ -68,13 +52,19 @@ class MedicamentController extends Controller
         return redirect(route('medicaments.index'));
     }
 
-    private function validateMedicament()
+    private function validateMedicament($medicament = null)
     {
+        $uniqueRule = 'unique:medicaments,bar_code';
+        if($medicament != null)
+        {
+            $uniqueRule = $uniqueRule . ',' . $medicament->id;
+        }
+
         $stringValidators = ['required', 'min:3', 'max:255'];
         return request()->validate([
             'name' => $stringValidators,
             'active_substance' => $stringValidators,
-            'bar_code' => ['required', 'unique:medicaments,bar_code', 'min:8', 'max:14', 'regex:/^[0-9]*$/'],
+            'bar_code' => ['required', $uniqueRule, 'min:8', 'max:14', 'regex:/^[0-9]*$/'],
             'price' => ['required', 'numeric', 'min:0.01', 'regex:/^\d+\.\d{0,2}$/'],
             'recipe_required' => ['required', 'Boolean'],
         ]);
