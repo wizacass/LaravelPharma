@@ -7,10 +7,9 @@
 
     <div class="container" style="margin-top: 1em">
 
+        @if ($employees->count() > 0)
         <table class="table is-striped" style="margin: auto">
-            <caption>
-                <p class="subtitle">{{ $label }}</p>
-            </caption>
+            <x-tablecaption title="{{ $label }}"/>
             <thead>
                 <th>ID</th>
                 <th>Name</th>
@@ -38,8 +37,13 @@
                 @endforeach
             </tbody>
         </table>
+        @else
+        <div class="container has-text-centered" style="padding: 2em">
+            <p class="subtitle">There are no employees!</p>
+        </div>
+        @endif
 
-        <x-largebutton href="employees/create">
+        <x-largebutton href="/employees/create">
             Register a new employee
         </x-largebutton>
     </div>
