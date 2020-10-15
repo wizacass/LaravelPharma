@@ -6,7 +6,7 @@
     </x-hero>
 
     <div class="container" style="padding: 1em">
-        <form method="POST" action="/employees">
+        <form method="POST" action="/pharmacies">
             @csrf
 
             <x-formerror />

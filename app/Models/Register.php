@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Register extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'pharmacy_id',
+        'model_id',
+    ];
 }

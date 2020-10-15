@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pharmacy;
+use App\Models\Register;
 use App\Models\RegisterModel;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,24 @@ class PharmacyController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $this->validateRequest();
+        $pharmacy = new Pharmacy(
+            request([
+                'address',
+                'phone_number',
+                'is_manufacturing',
+                'max_employees',
+            ])
+        );
+        $pharmacy->save();
+        $attributes = [
+            'pharmacy_id' => $pharmacy->id,
+            'model_id' => request('model_id')
+        ];
+        $register = new Register($attributes);
+        $register->save();
+
+        return redirect(route('pharmacies.index'));
     }
 
     /**
@@ -74,5 +92,16 @@ class PharmacyController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateRequest() 
+    {
+        return request()->validate([
+            'address' => ['required', 'min:3', 'max:255'],
+            'phone_number' => ['numeric', 'min:6'],
+            'is_manufacturing' => ['required', 'boolean'],
+            'max_employees' => ['required', 'integer', 'min:1'],
+            'model_id' => ['required', 'exists:register_models,id'],
+        ]);
     }
 }

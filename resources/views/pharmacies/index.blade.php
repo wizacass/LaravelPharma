@@ -21,7 +21,7 @@
                         <td>{{ $pharmacy->id }}</td>
                         <td>{{ $pharmacy->address }}</td>
                         <td>
-                            <x-editdelete href="/pharmacies/{{ $position->id }}" />
+                            <x-editdelete href="/pharmacies/{{ $pharmacy->id }}" />
                         </td>
                     </tr>
                 @endforeach
