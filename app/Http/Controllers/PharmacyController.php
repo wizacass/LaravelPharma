@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pharmacy;
+use App\Models\RegisterModel;
 use Illuminate\Http\Request;
 
 class PharmacyController extends Controller
@@ -15,7 +16,8 @@ class PharmacyController extends Controller
 
     public function create()
     {
-        return view('pharmacies.create');
+        $models = RegisterModel::all();
+        return view('pharmacies.create', compact('models'));
     }
 
     /**
