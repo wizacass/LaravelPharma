@@ -21,13 +21,7 @@ class PharmacyController extends Controller
         return view('pharmacies.create', compact('models'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
         $this->validateRequest();
         $pharmacy = new Pharmacy(
@@ -83,15 +77,10 @@ class PharmacyController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Pharmacy::destroy($id);
+        return redirect(route('pharmacies.index'));
     }
 
     private function validateRequest() 
