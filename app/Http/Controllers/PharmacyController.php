@@ -43,15 +43,9 @@ class PharmacyController extends Controller
         return redirect(route('pharmacies.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Pharmacy $pharmacy)
     {
-        //
+        return view('pharmacies.show', compact('pharmacy'));
     }
 
     /**

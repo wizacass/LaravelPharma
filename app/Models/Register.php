@@ -13,4 +13,9 @@ class Register extends Model
         'pharmacy_id',
         'model_id',
     ];
+
+    public function model()
+    {
+        return $this->belongsTo('App\Models\RegisterModel');
+    }
 }

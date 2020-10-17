@@ -21,7 +21,7 @@
                         <td>{{ $pharmacy->id }}</td>
                         <td>{{ $pharmacy->address }}</td>
                         <td>
-                            <x-editdelete href="/pharmacies/{{ $pharmacy->id }}" />
+                            <a class="button is-success is-small is-outlined" href="pharmacies/{{ $pharmacy->id }}">Show</a>
                         </td>
                     </tr>
                 @endforeach
