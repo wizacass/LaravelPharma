@@ -117,13 +117,25 @@
                 </div>
             </div>
             <div class="column">
-                <ol>
-                    @foreach ($pharmacy->employees as $employee)
-                        <li>{{ $employee->name }} {{ $employee->surname }}</li>
-                    @endforeach
-                </ol>
-                {{--
-                <x-editdelete href="/pharmacies/{{ $pharmacy->id }}" /> --}}
+                <table class="table is-striped is-fullwidth">
+                    <x-tablecaption title="Employees"/>
+                    <thead>
+                        <th>Name</th>
+                        <th><abbr title="Position">Pos.</abbr></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        @foreach ($pharmacy->employees as $employee)
+                            <tr>
+                                <td>{{ $employee->name }} {{ $employee->surname }}</td>
+                                <td>{{ $employee->position->title ?? "Pharmacy worker" }}</td>
+                                <td>
+                                    <a class="button is-small is-outlined is-danger" href="#">Unassign</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
 
