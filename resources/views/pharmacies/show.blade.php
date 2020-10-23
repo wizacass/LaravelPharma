@@ -121,7 +121,7 @@
                     <x-tablecaption title="Employees"/>
                     <thead>
                         <th>Name</th>
-                        <th><abbr title="Position">Pos.</abbr></th>
+                        <th>Position</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -136,6 +136,20 @@
                         @endforeach
                     </tbody>
                 </table>
+                @if ($pharmacy->medicaments->count() == 0)
+                    <div class="container has-text-centered">
+                        <h4 class="subtitle">There are no medicaments in this pharmacy! Please order some!</h4>
+                    </div>
+                @else
+                <ul>
+                    @foreach ($pharmacy->medicaments as $medicament)
+                        <li>
+                        <p>{{ $medicament->price }}</p>
+                        </li>
+                    @endforeach
+                </ul>
+                @endif
+                <a href="#">Order medicaments</a>
             </div>
         </div>
 

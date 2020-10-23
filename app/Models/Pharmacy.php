@@ -29,7 +29,7 @@ class Pharmacy extends Model
 
     function medicaments()
     {
-        return $this->hasMany('App\Models\Medicament');
+        return $this->hasMany('App\Models\Goods');
     }
 
     function isFull()
