@@ -1,7 +1,7 @@
 @extends('layouts/main')
 
 @section('content')
-    <x-hero color="is-warning">
+    <x-hero>
         Create a new position
     </x-hero>
 
