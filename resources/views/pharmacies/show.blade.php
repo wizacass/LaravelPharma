@@ -149,7 +149,9 @@
                     @endforeach
                 </ul>
                 @endif
-                <a href="#">Order medicaments</a>
+                <div class="control has-text-centered" style="padding-top: 1em">
+                    <a class="button is-primary" href="#">Order medicaments</a>
+                </div>
             </div>
         </div>
 
