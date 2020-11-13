@@ -33,7 +33,10 @@
         </div>
     </div>
     <div class="has-text-centered">
-        <a class="button is-success is-outlined is-large">Logout</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button class="button is-success is-outlined is-large">Logout</button>
+        </form>
     </div>
     @else
     <div class="tile is-ancestor has-text-centered" style="margin:1em">
