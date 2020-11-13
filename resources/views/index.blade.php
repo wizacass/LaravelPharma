@@ -1,19 +1,10 @@
 @extends('layouts/nomenu')
 
 @section('content')
-    <section class="hero is-primary is-success is-medium is-bold">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">
-                    L2. Laravel Integration
-                </h1>
-                <h2 class="subtitle">
-                    Vytenis Petrauskas IFF-8/1
-                </h2>
-            </div>
-        </div>
-    </section>
-
+    <x-hero subtitle="Vytenis Petrauskas IFF-8/1">
+        L3. Laravel Features
+    </x-hero>
+    
     @auth
     <div class="tile is-ancestor has-text-centered" style="margin:1em">
         <div class="tile is-vertical is-parent">
