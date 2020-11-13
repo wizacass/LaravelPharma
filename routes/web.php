@@ -25,3 +25,7 @@ Route::resource('/positions', PositionController::class);
 Route::resource('/employees', EmployeeController::class);
 Route::resource('/medicaments', MedicamentController::class);
 Route::resource('/pharmacies', PharmacyController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
