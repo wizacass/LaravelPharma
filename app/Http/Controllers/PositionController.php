@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Position;
-use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
     private $_validators = ['required', 'min:3', 'max:255'];
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
