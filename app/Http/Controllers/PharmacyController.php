@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class PharmacyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $pharmacies = Pharmacy::all();

@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Position;
-use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
     private $_validators = ['required', 'min:3', 'max:255'];
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -35,7 +39,7 @@ class PositionController extends Controller
 
     public function show(Position $position) 
     { 
-        $employees = Employee::where('position_id', $position->id)->get();
+        $employees = Employee::where('position_id', $position->id)->paginate(5);
         $label = "All {$position->title}s";
         return view('employees.index', compact('employees', 'label'));
     }

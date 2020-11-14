@@ -1,19 +1,11 @@
 @extends('layouts/nomenu')
 
 @section('content')
-    <section class="hero is-primary is-success is-medium is-bold">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">
-                    L2. Laravel Integration
-                </h1>
-                <h2 class="subtitle">
-                    Vytenis Petrauskas IFF-8/1
-                </h2>
-            </div>
-        </div>
-    </section>
-
+    <x-hero subtitle="Vytenis Petrauskas IFF-8/1">
+        L3. Laravel Features
+    </x-hero>
+    
+    @auth
     <div class="tile is-ancestor has-text-centered" style="margin:1em">
         <div class="tile is-vertical is-parent">
             <div class="tile is-child">
@@ -40,4 +32,28 @@
             </div>
         </div>
     </div>
+    <div class="has-text-centered">
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button class="button is-success is-outlined is-large">Logout</button>
+        </form>
+    </div>
+    @else
+    <div class="tile is-ancestor has-text-centered" style="margin:1em">
+        <div class="tile is-vertical is-parent">
+            <div class="tile is-child">
+                <article class="tile is-child notification is-success">
+                    <a class="title" href="/register">Signup</a>
+                </article>
+            </div>
+        </div>
+        <div class="tile is-vertical is-parent">
+            <div class="tile is-child">
+                <article class="tile is-child notification is-success">
+                    <a class="title" href="/login">Login</a>
+                </article>
+            </div>
+        </div>
+    </div>
+    @endauth
 @endsection
