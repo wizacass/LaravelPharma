@@ -10,7 +10,7 @@
           class="navbar-burger"
           :class="{ 'is-active': isMenuShown }"
           aria-label="menu"
-          aria-expanded="false"
+          :aria-expanded="{ isMenuShown }"
           v-on:click="toggleMenu"
         >
           <span aria-hidden="true"></span>
@@ -20,10 +20,15 @@
       </div>
       <div class="navbar-menu" :class="{ 'is-active': isMenuShown }">
         <div class="navbar-start">
-          <a class="navbar-item" href="/medicaments">Medicaments</a>
-          <a class="navbar-item" href="/pharmacies">Pharmacies</a>
-          <a class="navbar-item" href="/employees">Employees</a>
-          <a class="navbar-item" href="/positions">Positions</a>
+          <a class="navbar-item" href="/medicaments" v-if="isAuth">Medicaments</a>
+          <a class="navbar-item" href="/pharmacies" v-if="isAuth">Pharmacies</a>
+          <a class="navbar-item" href="/employees" v-if="isAuth">Employees</a>
+          <a class="navbar-item" href="/positions" v-if="isAuth">Positions</a>
+        </div>
+        <div class="navbar-end">
+          <a class="navbar-item" href="/signup" v-if="!isAuth">Signup</a>
+          <a class="navbar-item" href="/login" v-if="!isAuth">Login</a>
+          <a class="navbar-item" v-if="isAuth" v-on:click="logout">Logout</a>
         </div>
       </div>
     </nav>
@@ -32,11 +37,23 @@
 
 <script>
 export default {
+  props: {
+    isAuth: Boolean,
+  },
+
   methods: {
     toggleMenu: function (event) {
       this.isMenuShown = !this.isMenuShown;
     },
+    logout() {
+      axios.post('/logout').then(response => {
+        window.location = "/"
+      }).catch(error => {
+        console.log(error);
+      });
+    }
   },
+
   data: function () {
     return {
       isMenuShown: false,

@@ -15,7 +15,11 @@
 </head>
 <body>
     <div id="vueMenu">
-        <mainmenu></mainmenu>
+        @auth
+            <mainmenu :is-auth="true"></mainmenu>  
+        @else 
+            <mainmenu :is-auth="false"></mainmenu>  
+        @endauth
     </div>
 
     @yield('content')
