@@ -39,7 +39,7 @@ class PositionController extends Controller
 
     public function show(Position $position) 
     { 
-        $employees = Employee::where('position_id', $position->id)->get();
+        $employees = Employee::where('position_id', $position->id)->paginate(5);
         $label = "All {$position->title}s";
         return view('employees.index', compact('employees', 'label'));
     }
