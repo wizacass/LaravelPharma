@@ -2543,7 +2543,10 @@ var render = function() {
               !_vm.isAuth
                 ? _c(
                     "a",
-                    { staticClass: "navbar-item", attrs: { href: "/signup" } },
+                    {
+                      staticClass: "navbar-item",
+                      attrs: { href: "/register" }
+                    },
                     [_vm._v("Signup")]
                   )
                 : _vm._e(),

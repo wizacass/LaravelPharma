@@ -26,7 +26,7 @@
           <a class="navbar-item" href="/positions" v-if="isAuth">Positions</a>
         </div>
         <div class="navbar-end">
-          <a class="navbar-item" href="/signup" v-if="!isAuth">Signup</a>
+          <a class="navbar-item" href="/register" v-if="!isAuth">Signup</a>
           <a class="navbar-item" href="/login" v-if="!isAuth">Login</a>
           <a class="navbar-item" v-if="isAuth" v-on:click="logout">Logout</a>
         </div>
