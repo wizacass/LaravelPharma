@@ -1,8 +1,8 @@
 @extends('layouts/main')
 
 @section('content')
-    <x-hero color="is-warning">
-        Register a new medicament
+    <x-hero>
+        Edit medicament information
     </x-hero>
 
     <div class="container" style="padding: 1em">

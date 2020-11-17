@@ -71,7 +71,8 @@
                     <footer class="card-footer">
                         <p class="card-footer-item">
                             <span>
-                                <a href="/pharmacies/{{ $pharmacy->id }}/edit">Edit Information</a>
+                                {{-- <a href="/pharmacies/{{ $pharmacy->id }}/edit">Edit Information</a> --}}
+                                <a href="#">Edit Information</a>
                             </span>
                         </p>
                         <p class="card-footer-item">
