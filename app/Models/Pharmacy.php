@@ -37,6 +37,11 @@ class Pharmacy extends Model
         return $this->employees->count() == $this->max_employees;
     }
 
+    function isEmpty()
+    {
+        return $this->employees->count() == 0;
+    }
+
     function cash()
     {
         $cash = 0;
