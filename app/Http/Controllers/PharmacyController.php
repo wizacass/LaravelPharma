@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Pharmacy;
 use App\Models\Register;
 use App\Models\RegisterModel;
@@ -50,7 +51,8 @@ class PharmacyController extends Controller
 
     public function show(Pharmacy $pharmacy)
     {
-        return view('pharmacies.show', compact('pharmacy'));
+        $availableEmployees = Employee::where('pharmacy_id', null)->orderBy('position_id', 'DESC')->get();
+        return view('pharmacies.show', compact('pharmacy', 'availableEmployees'));
     }
 
     /**
@@ -82,7 +84,27 @@ class PharmacyController extends Controller
         return redirect(route('pharmacies.index'));
     }
 
-    private function validateRequest() 
+    public function assign($id)
+    {
+        $employeeId = request()->validate([
+            'employee' => ['required', 'integer', 'exists:employees,id']
+        ]);
+        $this->setEmployeePharmacy($employeeId, $id);    
+
+        return redirect("/pharmacies/$id");
+    }
+
+    public function unassign($id)
+    {
+        $employeeId = request()->validate([
+            'employee' => ['required', 'integer', 'exists:employees,id']
+        ]);
+        $this->setEmployeePharmacy($employeeId);    
+
+        return redirect("/pharmacies/$id");
+    }
+
+    private function validateRequest()
     {
         return request()->validate([
             'address' => ['required', 'min:3', 'max:255'],
@@ -91,5 +113,12 @@ class PharmacyController extends Controller
             'max_employees' => ['required', 'integer', 'min:1'],
             'model_id' => ['required', 'exists:register_models,id'],
         ]);
+    }
+
+    private function setEmployeePharmacy($employeeId, $pharmacyId = null)
+    {
+        $employee = Employee::find($employeeId)->first();
+        $employee->pharmacy_id = $pharmacyId;
+        $employee->save();
     }
 }

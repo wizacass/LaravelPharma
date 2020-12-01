@@ -14727,9 +14727,22 @@ module.exports = g;
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-Vue.component('mainmenu', __webpack_require__(/*! ./components/menu.vue */ "./resources/js/components/menu.vue")["default"]);
+Vue.component("mainmenu", __webpack_require__(/*! ./components/menu.vue */ "./resources/js/components/menu.vue")["default"]);
 var menuApp = new Vue({
-  el: '#vueMenu'
+  el: "#vueMenu"
+});
+var toggler = new Vue({
+  el: "#hasToggler",
+  methods: {
+    toggle: function toggle(event) {
+      this.isShown = !this.isShown;
+    }
+  },
+  data: function data() {
+    return {
+      isShown: false
+    };
+  }
 });
 
 /***/ }),
