@@ -61,9 +61,18 @@ class PharmacyController extends Controller
         return view('pharmacies.edit', compact('pharmacy'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Pharmacy $pharmacy)
     {
-        dd($request);
+        $count = $pharmacy->employees->count();
+        $attributes = request()->validate([
+            'address' => ['required', 'min:3', 'max:255'],
+            'phone_number' => ['numeric', 'min:6'],
+            'is_manufacturing' => ['required', 'boolean'],
+            'max_employees' => ['required', 'integer', "gte:$count"],
+        ]);
+        $pharmacy->update($attributes);
+
+        return redirect("/pharmacies/$pharmacy->id");
     }
 
     public function destroy($id)

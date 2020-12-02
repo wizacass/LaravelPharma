@@ -15,7 +15,7 @@
             <x-inlineinput label="Address" for="address" value="{{ $pharmacy->address }}"/>
             <x-inlineinput label="Phone Number" for="phone_number" value="{{ $pharmacy->phone_number }}"/>
             <x-inlinecheckbox label="Is Manufacturing" for="is_manufacturing" checked="{{ $pharmacy->is_manufacturing }}"/>
-            <x-inlineinput label="Capacity" for="max_employees" type="number" value="{{ $pharmacy->max_employees }}"/>
+            <x-inlineinput label="Employee capacity" for="max_employees" type="number" value="{{ $pharmacy->max_employees }}"/>
 
             <div class="field has-text-centered">
                 <button class="button is-primary is-large" type="submit">Update</button>
