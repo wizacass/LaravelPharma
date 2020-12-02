@@ -6,7 +6,6 @@ use App\Models\Employee;
 use App\Models\Pharmacy;
 use App\Models\Register;
 use App\Models\RegisterModel;
-use Illuminate\Http\Request;
 
 class PharmacyController extends Controller
 {
@@ -86,7 +85,7 @@ class PharmacyController extends Controller
         $employeeId = request()->validate([
             'employee' => ['required', 'integer', 'exists:employees,id']
         ]);
-        $this->setEmployeePharmacy($employeeId, $id);    
+        $this->setEmployeePharmacy($employeeId, $id);
 
         return redirect("/pharmacies/$id");
     }
@@ -96,31 +95,8 @@ class PharmacyController extends Controller
         $employeeId = request()->validate([
             'employee' => ['required', 'integer', 'exists:employees,id']
         ]);
-        $this->setEmployeePharmacy($employeeId);    
+        $this->setEmployeePharmacy($employeeId);
 
-        return redirect("/pharmacies/$id");
-    }
-
-    public function createRegister($id)
-    {
-        $modelId = request()->validate([
-            'model' => ['required', 'integer', 'exists:register_models,id']
-        ]);
-
-        $register = new Register;
-        $register->pharmacy_id = $id;
-        $register->model_id = $modelId["model"];
-        $register->save();
-
-        return redirect("/pharmacies/$id");
-    }
-
-    public function destroyRegister($id)
-    { 
-        $registerId = request()->validate([
-            'register' => ['required', 'integer', 'exists:registers,id']
-        ]);
-        Register::destroy($registerId);
         return redirect("/pharmacies/$id");
     }
 
