@@ -10,13 +10,17 @@ const menuApp = new Vue({
 const toggler = new Vue({
     el: "#hasToggler",
     methods: {
-        toggle: function(event) {
-            this.isShown = !this.isShown;
-        }
+        toggle1: function(event) {
+            this.isShown1 = !this.isShown1;
+        },
+        toggle2: function(event) {
+            this.isShown2 = !this.isShown2;
+        },
     },
     data: function() {
         return {
-            isShown: false
+            isShown1: false,
+            isShown2: false,
         };
     }
 });

@@ -27,5 +27,7 @@ Route::resource('/medicaments', MedicamentController::class);
 Route::resource('/pharmacies', PharmacyController::class);
 Route::post('/pharmacies/{id}/assign', [PharmacyController::class, 'assign']);
 Route::delete('/pharmacies/{id}/assign', [PharmacyController::class, 'unassign']);
+Route::post('/pharmacies/{id}/registers', [PharmacyController::class, 'createRegister']);
+Route::delete('/pharmacies/{id}/registers', [PharmacyController::class, 'destroyRegister']);
 
 Auth::routes();

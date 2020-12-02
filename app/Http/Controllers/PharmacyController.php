@@ -52,7 +52,8 @@ class PharmacyController extends Controller
     public function show(Pharmacy $pharmacy)
     {
         $availableEmployees = Employee::where('pharmacy_id', null)->orderBy('position_id', 'DESC')->get();
-        return view('pharmacies.show', compact('pharmacy', 'availableEmployees'));
+        $registers = RegisterModel::all();
+        return view('pharmacies.show', compact('pharmacy', 'availableEmployees', 'registers'));
     }
 
     /**
@@ -101,6 +102,29 @@ class PharmacyController extends Controller
         ]);
         $this->setEmployeePharmacy($employeeId);    
 
+        return redirect("/pharmacies/$id");
+    }
+
+    public function createRegister($id)
+    {
+        $modelId = request()->validate([
+            'model' => ['required', 'integer', 'exists:register_models,id']
+        ]);
+
+        $register = new Register;
+        $register->pharmacy_id = $id;
+        $register->model_id = $modelId["model"];
+        $register->save();
+
+        return redirect("/pharmacies/$id");
+    }
+
+    public function destroyRegister($id)
+    { 
+        $registerId = request()->validate([
+            'register' => ['required', 'integer', 'exists:registers,id']
+        ]);
+        Register::destroy($registerId);
         return redirect("/pharmacies/$id");
     }
 

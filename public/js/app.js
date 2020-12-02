@@ -14734,13 +14734,17 @@ var menuApp = new Vue({
 var toggler = new Vue({
   el: "#hasToggler",
   methods: {
-    toggle: function toggle(event) {
-      this.isShown = !this.isShown;
+    toggle1: function toggle1(event) {
+      this.isShown1 = !this.isShown1;
+    },
+    toggle2: function toggle2(event) {
+      this.isShown2 = !this.isShown2;
     }
   },
   data: function data() {
     return {
-      isShown: false
+      isShown1: false,
+      isShown2: false
     };
   }
 });

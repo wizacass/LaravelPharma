@@ -80,14 +80,14 @@
                         @if (!$pharmacy->isFull())
                             <p class="card-footer-item">
                                 <span>
-                                    <a v-on:click="toggle">Add an employee</a>
+                                    <a v-on:click="toggle1">Add an employee</a>
                                 </span>
                             </p>
                         @endif
                     </footer>
                 </div>
 
-                <div v-if="isShown">
+                <div v-if="isShown1">
                     <form method="POST" action="/pharmacies/{{ $pharmacy->id }}/assign">
                         @csrf
                         <div class="card" style="margin-top: 2em">
@@ -131,6 +131,16 @@
                                     <tr>
                                         <th>{{ $register->model->model }}</th>
                                         <td style="text-align: right">{{ $register->cash }}$</td>
+                                        @if (count($pharmacy->registers) > 1)
+                                            <td style="text-align: center">
+                                                <form method="POST" action="/pharmacies/{{ $pharmacy->id }}/registers">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input type="hidden" name="register" value="{{ $register->id }}">
+                                                    <button class="button is-danger is-small is-outlined" type="submit">Delete</button>
+                                                </form>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -139,10 +149,39 @@
                     <footer class="card-footer">
                         <p class="card-footer-item">
                             <span>
-                                <a href="#">Add a new register</a>
+                                <a v-on:click="toggle2">Add a new register</a>
                             </span>
                         </p>
                     </footer>
+                </div>
+
+                <div v-if="isShown2">
+                    <form method="POST" action="/pharmacies/{{ $pharmacy->id }}/registers">
+                        @csrf
+                        <div class="card" style="margin-top: 2em">
+                            <header class="card-header">
+                                <h4 class="card-header-title is-centered">
+                                    Select a register
+                                </h4>
+                            </header>
+                            <div class="card-content">
+                                <div class="select is-fullwidth">
+                                    <select name="model">
+                                        @foreach ($registers as $register)
+                                            <option value="{{ $register->id }}">
+                                                {{ $register->model }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <p class="card-footer-item">
+                                    <button class="button is-link is-inverted is-fullwidth" type="submit">Add</button>
+                                </p>
+                            </footer>
+                        </div>
+                    </form>
                 </div>
 
                 <div class="container has-text-centered" style="padding: 2em">
