@@ -72,9 +72,7 @@
                     <footer class="card-footer">
                         <p class="card-footer-item">
                             <span>
-                                {{-- <a href="/pharmacies/{{ $pharmacy->id }}/edit">Edit
-                                    Information</a> --}}
-                                <a href="#">Edit Information</a>
+                                <a href="/pharmacies/{{ $pharmacy->id }}/edit">Edit Information</a>
                             </span>
                         </p>
                         @if (!$pharmacy->isFull())
@@ -137,7 +135,8 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="hidden" name="register" value="{{ $register->id }}">
-                                                    <button class="button is-danger is-small is-outlined" type="submit">Delete</button>
+                                                    <button class="button is-danger is-small is-outlined"
+                                                        type="submit">Delete</button>
                                                 </form>
                                             </td>
                                         @endif

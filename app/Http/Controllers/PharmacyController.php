@@ -56,27 +56,14 @@ class PharmacyController extends Controller
         return view('pharmacies.show', compact('pharmacy', 'availableEmployees', 'registers'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Pharmacy $pharmacy)
     {
-        //
+        return view('pharmacies.edit', compact('pharmacy'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
     }
 
     public function destroy($id)

@@ -7,7 +7,7 @@
             <div class="select is-fullwidth {{ $errors->has($for) ? 'is-danger' : '' }}">
                 <select name="{{ $for }}">
                     <option value="0">No</option>
-                    <option value="1">Yes</option>
+                    <option value="1" {{ $checked ?? '' == 1 ? 'selected' : '' }}>Yes</option>
                 </select>
             </div>
         </div>
