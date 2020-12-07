@@ -24,3 +24,20 @@ const toggler = new Vue({
         };
     }
 });
+
+const dynamicInputs = new Vue({
+    el: '#orderForm',
+    data: {
+        count: 0,
+    },
+    methods: {
+        add: function() {
+            this.count++
+        },
+        remove: function() {
+            if(this.count > 0) {
+                this.count--
+            }
+        }
+    }
+});

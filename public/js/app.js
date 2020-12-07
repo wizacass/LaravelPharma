@@ -14748,6 +14748,22 @@ var toggler = new Vue({
     };
   }
 });
+var dynamicInputs = new Vue({
+  el: '#orderForm',
+  data: {
+    count: 0
+  },
+  methods: {
+    add: function add() {
+      this.count++;
+    },
+    remove: function remove() {
+      if (this.count > 0) {
+        this.count--;
+      }
+    }
+  }
+});
 
 /***/ }),
 

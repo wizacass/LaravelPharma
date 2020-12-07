@@ -193,6 +193,7 @@
                 </div>
 
             </div>
+
             <div class="column">
                 <div class="box">
                     @if ($pharmacy->isEmpty())
@@ -241,7 +242,7 @@
                     </ul>
                 @endif
                 <div class="control has-text-centered" style="padding-top: 1em">
-                    <a class="button is-primary" href="#">Order medicaments</a>
+                    <a class="button is-primary" href="/pharmacies/{{ $pharmacy->id }}/order">Order medicaments</a>
                 </div>
             </div>
         </div>
