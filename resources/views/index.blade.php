@@ -2,7 +2,7 @@
 
 @section('content')
     <x-hero subtitle="Vytenis Petrauskas IFF-8/1">
-        L3. Laravel Features
+        L4. Laravel Forms
     </x-hero>
     
     @auth
