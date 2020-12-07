@@ -6,6 +6,11 @@ use App\Models\Register;
 
 class RegistersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function createRegister($id)
     {
         $modelId = request()->validate([

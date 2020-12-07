@@ -193,6 +193,7 @@
                 </div>
 
             </div>
+
             <div class="column">
                 <div class="box">
                     @if ($pharmacy->isEmpty())
@@ -232,16 +233,28 @@
                         <h4 class="subtitle">There are no medicaments in this pharmacy! Please order some!</h4>
                     </div>
                 @else
-                    <ul>
-                        @foreach ($pharmacy->medicaments as $medicament)
-                            <li>
-                                <p>{{ $medicament->price }}</p>
-                            </li>
-                        @endforeach
-                    </ul>
+                    <div class="box">
+                        <table class="table is-fullwidth is-striped">
+                            <x-tablecaption title="Inventory" />
+                            <thead class="has-text-centered">
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($pharmacy->medicaments as $medicament)
+                                <tr>
+                                    <td> {{ $medicament->product->name }} </td>
+                                    <td class="has-text-right"> {{ $medicament->price }}$ </td>
+                                    <td class="has-text-right"> {{ $medicament->quantity }} </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @endif
                 <div class="control has-text-centered" style="padding-top: 1em">
-                    <a class="button is-primary" href="#">Order medicaments</a>
+                    <a class="button is-primary" href="/pharmacies/{{ $pharmacy->id }}/order">Order medicaments</a>
                 </div>
             </div>
         </div>
