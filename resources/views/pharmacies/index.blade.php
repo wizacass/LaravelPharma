@@ -21,7 +21,7 @@
                         <td>{{ $pharmacy->id }}</td>
                         <td>{{ $pharmacy->address }}</td>
                         <td>
-                            <a class="button is-success is-small is-outlined" href="pharmacies/{{ $pharmacy->id }}">Show</a>
+                            <a class="button is-success is-small is-outlined" href="/pharmacies/{{ $pharmacy->id }}">Show</a>
                         </td>
                     </tr>
                 @endforeach

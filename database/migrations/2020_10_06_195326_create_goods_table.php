@@ -23,11 +23,13 @@ class CreateGoodsTable extends Migration
 
             $table->foreign('pharmacy_id')
                 ->references('id')
-                ->on('pharmacies');
+                ->on('pharmacies')
+                ->onDelete('cascade');
 
             $table->foreign('medicament_id')
                 ->references('id')
-                ->on('medicaments');
+                ->on('medicaments')
+                ->onDelete('cascade');
         });
     }
 
