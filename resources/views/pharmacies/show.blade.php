@@ -184,12 +184,11 @@
                 </div>
 
                 <div class="container has-text-centered" style="padding: 2em">
-                    <a class="button is-danger is-large" href="#">Delete Pharmacy</a>
-                    {{-- <form method="POST" action="/pharmacies/{{ $pharmacy->id }}">
+                    <form method="POST" action="/pharmacies/{{ $pharmacy->id }}">
                         @csrf
                         @method('DELETE')
                         <button class="button is-danger is-large" type="submit">Delete Pharmacy</button>
-                    </form> --}}
+                    </form>
                 </div>
 
             </div>
