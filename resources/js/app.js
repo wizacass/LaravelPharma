@@ -2,6 +2,7 @@ window.Vue = require("vue");
 window.axios = require("axios");
 
 Vue.component("mainmenu", require("./components/menu.vue").default);
+Vue.component("orderinputs", require("./components/orderform.vue").default);
 
 const menuApp = new Vue({
     el: "#vueMenu"
@@ -25,19 +26,6 @@ const toggler = new Vue({
     }
 });
 
-const dynamicInputs = new Vue({
+const ordersApp = new Vue({
     el: '#orderForm',
-    data: {
-        count: 0,
-    },
-    methods: {
-        add: function() {
-            this.count++
-        },
-        remove: function() {
-            if(this.count > 0) {
-                this.count--
-            }
-        }
-    }
 });
