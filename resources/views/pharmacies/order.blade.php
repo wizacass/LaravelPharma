@@ -10,6 +10,7 @@
             @csrf
             <x-formerror />
 
+            <input type="hidden" name="id" value="{{ $id }}">
             <orderinputs :products='@json($medicaments)'></orderinputs>
 
             <div class="field has-text-centered">
